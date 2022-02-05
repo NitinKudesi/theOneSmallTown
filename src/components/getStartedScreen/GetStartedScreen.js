@@ -25,7 +25,7 @@ const GetStartedScreen = ({navigation}) => {
       </TouchableOpacity>
       <Text style={getStartedScreenStyle.normalText}>OR</Text>
       <TouchableOpacity 
-       onPress={() => navigation.navigate('SignUpScreen')}
+       onPress={() => navigation.navigate('Step1')}
       style={getStartedScreenStyle.createAccountScreen}>
         <Text style={getStartedScreenStyle.buttonText}>Create New Account</Text>
       </TouchableOpacity>
