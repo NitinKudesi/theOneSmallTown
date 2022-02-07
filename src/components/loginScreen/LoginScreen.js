@@ -65,7 +65,9 @@ const LoginScreen = ({navigation}) => {
             }}
           />
         </View>
-        <TouchableOpacity style={loginScreenStyle.button}>
+        <TouchableOpacity 
+        onPress={() => navigation.navigate('SlideDrawer')}
+        style={loginScreenStyle.button}>
           <Text style={loginScreenStyle.buttonText}>LOGIN</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('SendMailScreen')}>
