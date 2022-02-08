@@ -37,11 +37,17 @@ import PrivacyPolicyScreen from '../components/drawer/privacyPolicyScreen/Privac
 import SettingScreen from '../components/drawer/settingScreen/SettingScreen';
 import TermConditionScreen from '../components/drawer/termConditionScreen/TermConditionScreen';
 
-
 import PersonalDetailScreen from '../components/personalDetailScreen/PersonalDetailScreen';
 import ChangeLangScreen from '../components/changeLanguageScreen/ChangeLangScreen';
 import TaxScreen from '../components/taxDecScreen/TaxScreen';
 import HelpCenterScreen from '../components/helpCenterScreen/HelpCenterScreen';
+import NotificationScreen from '../components/notification/NotificationScreen';
+
+import PermanentJobScreen from '../components/permanentJobScreen/PermanentJobScreen';
+import VolunteerScreen from '../components/volunteerWorkScreen/VolunteerScreen';
+import CounsilCategoryScreen from '../components/counsilCategoryScreen/CounsilCategoryScreen';
+import CounsilListScreen from '../components/counsilListScreen/CounsilListScreen';
+import FaqScreen from '../components/faqScreen/FaqScreen';
 
 // const bottomTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -194,20 +200,16 @@ const SlideDrawer = () => {
         component={JobWorkScreen}
         options={{
           // headerShown: false,
-          title: 'Job and Work',
+          title: 'JobWork',
           headerTitleAlign: 'center',
           headerTitleStyle: {
             fontWeight: 'bold',
           },
-          // headerBackground: () => (
-          //   <LinearGradient
-          //     colors={['#158FE4', '#5EBDFF']}
-          //     style={{flex: 1, borderBottomLeftRadius: 30}}
-          //     start={{x: 0, y: 0}}
-          //     end={{x: 1, y: 0}}
-          //   />
-          //   // </LinearGradient>
-          // ),
+         
+          headerStyle: {
+            // height: 72,
+            backgroundColor: '#5A55CA',
+          },
           headerTitle: () => (
             <Text
               style={{
@@ -216,9 +218,9 @@ const SlideDrawer = () => {
                 fontFamily: 'BwModelicaSS01-Bold',
                 color: 'white',
                 // fontWeight: 'bold',
-                textAlign: 'left',
+                // textAlign: 'left',
               }}>
-              Help & Support
+             Welcome, Username 
             </Text>
           ),
           headerLeft: () => (
@@ -228,7 +230,7 @@ const SlideDrawer = () => {
                 height: 16,
                 marginLeft: 25,
               }}
-              // source={require('../../assets/images/leftArrow.png')}
+              source={require('../assets/images/backbutton.png')}
             />
           ),
         }}></Drawer.Screen>
@@ -238,7 +240,7 @@ const SlideDrawer = () => {
         component={CounsilScreen}
         options={{
           // headerShown: false,
-          title: 'Counsils',
+          title: 'Counsil',
           headerTitleAlign: 'center',
           headerTitleStyle: {
             fontWeight: 'bold',
@@ -252,6 +254,12 @@ const SlideDrawer = () => {
           //   />
           //   // </LinearGradient>
           // ),
+          headerStyle: {
+            height: 72,
+            backgroundColor: '#5A55CA',
+            borderBottomLeftRadius: 17,
+            borderBottomRightRadius: 17,
+          },
           headerTitle: () => (
             <Text
               style={{
@@ -260,9 +268,9 @@ const SlideDrawer = () => {
                 fontFamily: 'BwModelicaSS01-Bold',
                 color: 'white',
                 // fontWeight: 'bold',
-                textAlign: 'left',
+                // textAlign: 'left',
               }}>
-              Terms & Condition
+              Counsil
             </Text>
           ),
           headerLeft: () => (
@@ -272,7 +280,7 @@ const SlideDrawer = () => {
                 height: 16,
                 marginLeft: 25,
               }}
-              // source={require('../../assets/images/leftArrow.png')}
+              source={require('../assets/images/backbutton.png')}
             />
           ),
         }}></Drawer.Screen>
@@ -480,7 +488,7 @@ const SlideDrawer = () => {
   );
 };
 
-export const AuthStack = () => {
+export const AuthStack = ({navigation}) => {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -557,34 +565,407 @@ export const AuthStack = () => {
         name="SlideDrawer"
         component={SlideDrawer}
         options={{headerShown: false}}
-      />  
-       <Stack.Screen
+      />
+      <Stack.Screen
         name="PersonalDetailScreen"
         component={PersonalDetailScreen}
         options={{
           // headerShown: false,
+          headerTitleAlign: 'center',
           headerStyle: {
             height: 72,
             backgroundColor: '#5A55CA',
             borderBottomLeftRadius: 17,
             borderBottomRightRadius: 17,
           },
+          headerTitle: () => (
+            <Text
+              style={{
+                //fontSize: 12.49,
+                fontSize: 18,
+                fontFamily: 'BwModelicaSS01-Bold',
+                color: 'white',
+                // fontWeight: 'bold',
+                textAlign: 'left',
+              }}>
+              Personal Details
+            </Text>
+          ),
         }}
-      />   
-       <Stack.Screen
+      />
+      <Stack.Screen
         name="ChangeLangScreen"
         component={ChangeLangScreen}
-        options={{headerShown: false}}
-      />  
-       <Stack.Screen
+        options={{
+          // headerShown: false,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            height: 72,
+            backgroundColor: '#5A55CA',
+            borderBottomLeftRadius: 17,
+            borderBottomRightRadius: 17,
+          },
+          headerTitle: () => (
+            <Text
+              style={{
+                //fontSize: 12.49,
+                fontSize: 18,
+                fontFamily: 'BwModelicaSS01-Bold',
+                color: 'white',
+                // fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              Change Language
+            </Text>
+          ),
+          headerLeft: ({navigation}) => (
+            <TouchableOpacity
+            // onPress={() => navigation.goBack()}
+            >
+            <Image
+              style={{
+                width: 8.35,
+                height: 14,
+                marginLeft: 25,
+              }}
+              source={require('../assets/images/backbutton.png')}
+            />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <Stack.Screen
         name="TaxScreen"
         component={TaxScreen}
-        options={{headerShown: false}}
+        options={{
+          // headerShown: false,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            height: 72,
+            backgroundColor: '#5A55CA',
+            borderBottomLeftRadius: 17,
+            borderBottomRightRadius: 17,
+          },
+          headerTitle: () => (
+            <Text
+              style={{
+                //fontSize: 12.49,
+                fontSize: 18,
+                fontFamily: 'BwModelicaSS01-Bold',
+                color: 'white',
+                // fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              Tax Declaration
+            </Text>
+          ),
+          headerLeft: ({navigation}) => (
+            <TouchableOpacity
+            // onPress={() => navigation.goBack()}
+            >
+            <Image
+              style={{
+                width: 8.35,
+                height: 14,
+                marginLeft: 25,
+              }}
+              source={require('../assets/images/backbutton.png')}
+            />
+            </TouchableOpacity>
+          ),
+        }}
       />
-       <Stack.Screen
+      <Stack.Screen
         name="HelpCenterScreen"
         component={HelpCenterScreen}
-        options={{headerShown: false}}
+        options={{
+          // headerShown: false,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            height: 72,
+            backgroundColor: '#5A55CA',
+            borderBottomLeftRadius: 17,
+            borderBottomRightRadius: 17,
+          },
+          headerTitle: () => (
+            <Text
+              style={{
+                //fontSize: 12.49,
+                fontSize: 18,
+                fontFamily: 'BwModelicaSS01-Bold',
+                color: 'white',
+                // fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              Visit help center
+            </Text>
+          ),
+          headerLeft: ({navigation}) => (
+            <TouchableOpacity
+            // onPress={() => navigation.goBack()}
+            >
+            <Image
+              style={{
+                width: 8.35,
+                height: 14,
+                marginLeft: 25,
+              }}
+              source={require('../assets/images/backbutton.png')}
+            />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+
+<Stack.Screen
+        name="NotificationScreen"
+        component={NotificationScreen}
+        options={{
+          // headerShown: false,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            height: 72,
+            backgroundColor: '#5A55CA',
+            borderBottomLeftRadius: 17,
+            borderBottomRightRadius: 17,
+          },
+          headerTitle: () => (
+            <Text
+              style={{
+                //fontSize: 12.49,
+                fontSize: 18,
+                fontFamily: 'BwModelicaSS01-Bold',
+                color: 'white',
+                // fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              NotificationScreen
+            </Text>
+          ),
+          headerLeft: ({navigation}) => (
+            <TouchableOpacity
+            // onPress={() => navigation.goBack()}
+            >
+            <Image
+              style={{
+                width: 8.35,
+                height: 14,
+                marginLeft: 25,
+              }}
+              source={require('../assets/images/backbutton.png')}
+            />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="PermanentJobScreen"
+        component={PermanentJobScreen}
+        options={{
+          headerShown: false,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            height: 72,
+            backgroundColor: '#5A55CA',
+            borderBottomLeftRadius: 17,
+            borderBottomRightRadius: 17,
+          },
+          headerTitle: () => (
+            <Text
+              style={{
+                //fontSize: 12.49,
+                fontSize: 18,
+                fontFamily: 'BwModelicaSS01-Bold',
+                color: 'white',
+                // fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              NotificationScreen
+            </Text>
+          ),
+          headerLeft: ({navigation}) => (
+            <TouchableOpacity
+            // onPress={() => navigation.goBack()}
+            >
+            <Image
+              style={{
+                width: 8.35,
+                height: 14,
+                marginLeft: 25,
+              }}
+              source={require('../assets/images/backbutton.png')}
+            />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+
+<Stack.Screen
+        name="VolunteerScreen"
+        component={VolunteerScreen}
+        options={{
+          headerShown: false,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            height: 72,
+            backgroundColor: '#5A55CA',
+            borderBottomLeftRadius: 17,
+            borderBottomRightRadius: 17,
+          },
+          headerTitle: () => (
+            <Text
+              style={{
+                //fontSize: 12.49,
+                fontSize: 18,
+                fontFamily: 'BwModelicaSS01-Bold',
+                color: 'white',
+                // fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              NotificationScreen
+            </Text>
+          ),
+          headerLeft: ({navigation}) => (
+            <TouchableOpacity
+            // onPress={() => navigation.goBack()}
+            >
+            <Image
+              style={{
+                width: 8.35,
+                height: 14,
+                marginLeft: 25,
+              }}
+              source={require('../assets/images/backbutton.png')}
+            />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+
+<Stack.Screen
+        name="CounsilCategoryScreen"
+        component={CounsilCategoryScreen}
+        options={{
+          // headerShown: false,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            height: 72,
+            backgroundColor: '#5A55CA',
+            borderBottomLeftRadius: 17,
+            borderBottomRightRadius: 17,
+          },
+          headerTitle: () => (
+            <Text
+              style={{
+                //fontSize: 12.49,
+                fontSize: 18,
+                fontFamily: 'BwModelicaSS01-Bold',
+                color: 'white',
+                // fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              CounsilCategoryScreen
+            </Text>
+          ),
+          headerLeft: ({navigation}) => (
+            <TouchableOpacity
+            // onPress={() => navigation.goBack()}
+            >
+            <Image
+              style={{
+                width: 8.35,
+                height: 14,
+                marginLeft: 25,
+              }}
+              source={require('../assets/images/backbutton.png')}
+            />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+
+<Stack.Screen
+        name="CounsilListScreen"
+        component={CounsilListScreen}
+        options={{
+          // headerShown: false,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            height: 72,
+            backgroundColor: '#5A55CA',
+            borderBottomLeftRadius: 17,
+            borderBottomRightRadius: 17,
+          },
+          headerTitle: () => (
+            <Text
+              style={{
+                //fontSize: 12.49,
+                fontSize: 18,
+                fontFamily: 'BwModelicaSS01-Bold',
+                color: 'white',
+                // fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              CounsilListScreen
+            </Text>
+          ),
+          headerLeft: ({navigation}) => (
+            <TouchableOpacity
+            // onPress={() => navigation.goBack()}
+            >
+            <Image
+              style={{
+                width: 8.35,
+                height: 14,
+                marginLeft: 25,
+              }}
+              source={require('../assets/images/backbutton.png')}
+            />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+
+<Stack.Screen
+        name="FaqScreen"
+        component={FaqScreen}
+        options={{
+          // headerShown: false,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            height: 72,
+            backgroundColor: '#5A55CA',
+            borderBottomLeftRadius: 17,
+            borderBottomRightRadius: 17,
+          },
+          headerTitle: () => (
+            <Text
+              style={{
+                //fontSize: 12.49,
+                fontSize: 18,
+                fontFamily: 'BwModelicaSS01-Bold',
+                color: 'white',
+                // fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              FaqScreen
+            </Text>
+          ),
+          headerLeft: ({navigation}) => (
+            <TouchableOpacity
+            // onPress={() => navigation.goBack()}
+            >
+            <Image
+              style={{
+                width: 8.35,
+                height: 14,
+                marginLeft: 25,
+              }}
+              source={require('../assets/images/backbutton.png')}
+            />
+            </TouchableOpacity>
+          ),
+        }}
       />
     </Stack.Navigator>
   );
@@ -593,4 +974,3 @@ export const AuthStack = () => {
 export const AppStack = () => {
   return <Stack.Navigator></Stack.Navigator>;
 };
-               

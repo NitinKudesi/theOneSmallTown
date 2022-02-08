@@ -39,7 +39,9 @@ const SettingScreen = ({navigation}) => {
           style={SettingScreenStyle.icons}
           source={require('../../../assets/images/bell.png')}
         />
-        <TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate('NotificationScreen')}
+        >
           <Text style={SettingScreenStyle.text}>Notification Setting</Text>
         </TouchableOpacity>
       </View>
