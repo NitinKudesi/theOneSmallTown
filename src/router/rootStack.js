@@ -2,7 +2,7 @@ import React from 'react';
 
 // import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -10,7 +10,7 @@ import {
   DrawerItem,
 } from '@react-navigation/drawer';
 
-import {View, TouchableOpacity, Image, Text} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Image, Dimensions} from 'react-native';
 
 import SplashScreen from '../components/splashScreen/SplashScreen';
 import GetStartedScreen from '../components/getStartedScreen/GetStartedScreen';
@@ -49,9 +49,83 @@ import CounsilCategoryScreen from '../components/counsilCategoryScreen/CounsilCa
 import CounsilListScreen from '../components/counsilListScreen/CounsilListScreen';
 import FaqScreen from '../components/faqScreen/FaqScreen';
 
-// const bottomTab = createBottomTabNavigator();
+import CalenderScreen from '../components/bottomTabScreens/calender/CalenderScreen';
+import ProfileScreen from '../components/bottomTabScreens/profile/ProfileScreen';
+import FeedBack from '../components/feedback/FeedBack';
+
+const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
+
+const {width} = Dimensions.get('window');
+
+const HomeTabBarButtom = ({children, onPress}) => (
+  <TouchableOpacity
+    style={{
+      top: -20,
+      justifyContent: 'center',
+      alignItems: 'center',
+      // ...styles.shadow,
+      marginLeft: 22
+    }}
+    onPress={onPress}>
+    <View
+       style={styles.circle}>
+      {children}
+    </View>
+  </TouchableOpacity>
+);
+
+const WalletTabBarButtom = ({children, onPress}) => (
+  <TouchableOpacity
+    style={{
+      top: -20,
+      justifyContent: 'center',
+      alignItems: 'center',
+      // ...styles.shadow,
+      marginLeft: 18
+    }}
+    onPress={onPress}>
+    <View
+       style={styles.circle}>
+      {children}
+    </View>
+  </TouchableOpacity>
+);
+
+const CalenderTabBarButtom = ({children, onPress}) => (
+  <TouchableOpacity
+    style={{
+      top: -20,
+      justifyContent: 'center',
+      alignItems: 'center',
+      // ...styles.shadow,
+      marginLeft: 18
+    }}
+    onPress={onPress}>
+    <View
+       style={styles.circle}>
+      {children}
+    </View>
+  </TouchableOpacity>
+);
+
+const ProfileTabBarButtom = ({children, onPress}) => (
+  <TouchableOpacity
+    style={{
+      top: -20,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginLeft: 18
+      // ...styles.shadow,
+    }}
+    onPress={onPress}>
+    <View
+      style={styles.circle}>
+      {children}
+    </View>
+  </TouchableOpacity>
+);
 
 const SlideDrawer = () => {
   return (
@@ -64,7 +138,7 @@ const SlideDrawer = () => {
           </DrawerContentScrollView>
         );
       }}>
-      {/* <Drawer.Screen
+      <Drawer.Screen
         name="BottomTab"
         component={BottomTab}
         options={{
@@ -103,52 +177,7 @@ const SlideDrawer = () => {
           //     />
           //   </TouchableOpacity>
           // ),
-        }}></Drawer.Screen> */}
-
-      <Drawer.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        options={{
-          // headerShown: false,
-          title: 'Home',
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            fontFamily: 'Tisa Sans Pro Medium',
-          },
-          // headerBackground: () => (
-          //   <LinearGradient
-          //     colors={['#158FE4', '#5EBDFF']}
-          //     style={{flex: 1, borderBottomLeftRadius: 30}}
-          //     start={{x: 0, y: 0}}
-          //     end={{x: 1, y: 0}}
-          //   />
-          //   // </LinearGradient>
-          // ),
-          headerTitle: () => (
-            <Text
-              style={{
-                //fontSize: 12.49,
-                fontSize: 18,
-                fontFamily: 'Tisa Sans Pro Medium',
-                color: 'white',
-                // fontWeight: 'bold',
-                textAlign: 'left',
-              }}>
-              Test & Assignments
-            </Text>
-          ),
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Image
-                style={{
-                  width: 9,
-                  height: 16,
-                  marginLeft: 25,
-                }}
-                // source={require('../../assets/images/leftArrow.png')}
-              />
-            </TouchableOpacity>
-          ),
+         
         }}></Drawer.Screen>
 
       <Drawer.Screen
@@ -487,6 +516,239 @@ const SlideDrawer = () => {
     </Drawer.Navigator>
   );
 };
+
+const BottomTab = ({navigation}) => {
+  function between() {
+    return (
+      <Tabs.Navigator>
+        <Tabs.Screen name="App" component={loginScreen} />
+      </Tabs.Navigator>
+    );
+  }
+  return (
+    <Tabs.Navigator
+      screenOptions={{
+        // tabBarShowLabel: false,
+        tabBarStyle: {
+          position: 'relative',
+          //bottom: 25,
+          //left: 10,
+          //right: 10,
+          height: 68,
+          paddingTop: 5,
+          backgroundColor: '#5A55CA',
+          borderTopRightRadius: 25,
+          borderTopLeftRadius: 25,
+        },
+      }}>
+      <Tabs.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{
+          headerShown: false,
+          title: '',
+          // tintColor: focused ? "#000000" : "#ffffff",
+          headerTitleAlign: 'left',
+          // backgroundColor: '#FF8E8E',
+          headerStyle: {
+            height: 72,
+            backgroundColor: '#DB6666',
+            borderBottomLeftRadius: 17,
+            borderBottomRightRadius: 17,
+          },
+          headerTitleStyle: {
+            // fontWeight: 'bold',
+            fontFamily: 'BwModelicaSS01-Medium'
+          },
+          headerTitle: () => (
+            <Text
+              style={{
+                //fontSize: 12.49,
+                fontSize: 18,
+                fontFamily: 'BwModelicaSS01-Bold',
+                color: 'white',
+                textAlign: 'left',
+              }}>
+              Location
+            </Text>
+          ),
+          headerRight: ({navigation}) => (
+            <TouchableOpacity
+            // onPress={() => navigation.navigate('orderCartScreen')}
+            >
+              <Image
+                style={{
+                  width: 24,
+                  height: 24,
+                  marginRight: 25,
+                }}
+                // source={require('./../..//assets/images/icons/crt.png')}
+              />
+            </TouchableOpacity>
+          ),
+          tabBarIcon: ({focused}) => (
+            <View style={{flexDirection: 'row'}}>
+              <Image
+                source={require('../assets/images/overview.png')}
+                resizeMode="contain"
+                style={{
+                  width: 40,
+                  height: 25,
+                  tintColor: focused ? '#5A55CA' : 'grey',
+                }}
+              />
+            </View>
+          ),
+          tabBarButton: props => <HomeTabBarButtom {...props} />
+        }}
+      />
+
+      <Tabs.Screen
+        name="PaymentScreen"
+        component={PaymentScreen}
+        options={{
+          headerShown: false,
+          title: '',
+          // tintColor: focused ? "#000000" : "#ffffff",
+          headerTitleAlign: 'left',
+          // backgroundColor: '#FF8E8E',
+          headerStyle: {
+            height: 72,
+            backgroundColor: '#DB6666',
+            borderBottomLeftRadius: 17,
+            borderBottomRightRadius: 17,
+          },
+          headerTitleStyle: {
+            // fontWeight: 'bold',
+            fontFamily: 'BwModelicaSS01-Medium'
+          },
+          headerTitle: () => (
+            <Text
+              style={{
+                //fontSize: 12.49,
+                fontSize: 18,
+                fontFamily: 'BwModelicaSS01-Bold',
+                color: 'white',
+                textAlign: 'left',
+              }}>
+              Location
+            </Text>
+          ),
+          headerRight: ({navigation}) => (
+            <TouchableOpacity
+            // onPress={() => navigation.navigate('orderCartScreen')}
+            >
+              <Image
+                style={{
+                  width: 24,
+                  height: 24,
+                  marginRight: 25,
+                }}
+                // source={require('./../..//assets/images/icons/crt.png')}
+              />
+            </TouchableOpacity>
+          ),
+          tabBarIcon: ({focused}) => (
+            <View style={{flexDirection: 'row'}}>
+              <Image
+                source={require('../assets/images/money.png')}
+                resizeMode="contain"
+                style={{
+                  width: 34,
+                  height: 34,
+                  tintColor: focused ? '#5A55CA' : 'grey',
+                }}
+              />
+            </View>
+          ),
+          tabBarButton: props => <WalletTabBarButtom {...props} />
+        }}
+      />
+
+      <Tabs.Screen
+        name="CalenderScreen"
+        component={CalenderScreen}
+        options={{
+          headerShown: false,
+          title: '',
+          tabBarIcon: ({focused}) => (
+            <View style={{flexDirection: 'row'}}>
+              <Image
+                source={require('../assets/images/attendance.png')}
+                resizeMode="contain"
+                style={{
+                  width: 42,
+                  height: 42,
+                  tintColor: focused ? '#5A55CA' : 'grey',
+                }}
+              />
+            </View>
+          ),
+          tabBarButton: props => <CalenderTabBarButtom {...props} />
+        }}
+      />
+
+      <Tabs.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
+        options={{
+          headerShown: false,
+          title: '',
+          headerTitleAlign: 'center',
+          // backgroundColor: '#FF8E8E',
+          headerStyle: {
+            height: 72,
+            backgroundColor: '#DB6666',
+            borderBottomLeftRadius: 17,
+            borderBottomRightRadius: 17,
+          },
+          headerTitleStyle: {
+          },
+          headerTitle: () => (
+            <Text
+              style={{
+                //fontSize: 12.49,
+                fontSize: 18,
+                fontFamily: 'BwModelicaSS01-Bold',
+                color: 'white',
+              }}>
+              ProfileScreen
+            </Text>
+          ),
+          headerRight: () => (
+            <TouchableOpacity>
+              <Image
+                style={{
+                  width: 24,
+                  height: 24,
+                  marginRight: 25,
+                }}
+                // source={require('./../..//assets/images/icons/crt.png')}
+              />
+            </TouchableOpacity>
+          ),
+          tabBarIcon: ({focused}) => (
+            <View style={{flexDirection: 'row'}}>
+              <Image
+                source={require('../assets/images/pro.png')}
+                resizeMode="contain"
+                style={{
+                  width: 24,
+                  height: 27,
+                  tintColor: focused ? '#5A55CA' : 'grey',
+                  
+                }}
+              />
+            </View>
+          ),
+          tabBarButton: props => <ProfileTabBarButtom {...props} />
+        }}
+      />
+
+    </Tabs.Navigator>
+  );
+};
+
 
 export const AuthStack = ({navigation}) => {
   return (
@@ -951,7 +1213,49 @@ export const AuthStack = ({navigation}) => {
               FaqScreen
             </Text>
           ),
-          headerLeft: ({navigation}) => (
+          headerLeft: () => (
+            <TouchableOpacity
+            // onPress={() => navigation.goBack()}
+            >
+            <Image
+              style={{
+                width: 8.35,
+                height: 14,
+                marginLeft: 25,
+              }}
+              source={require('../assets/images/backbutton.png')}
+            />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+
+<Stack.Screen
+        name="FeedBack"
+        component={FeedBack}
+        options={{
+          headerShown: false,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            height: 72,
+            backgroundColor: '#5A55CA',
+            borderBottomLeftRadius: 17,
+            borderBottomRightRadius: 17,
+          },
+          headerTitle: () => (
+            <Text
+              style={{
+                //fontSize: 12.49,
+                fontSize: 18,
+                fontFamily: 'BwModelicaSS01-Bold',
+                color: 'white',
+                // fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              FeedBack
+            </Text>
+          ),
+          headerLeft: () => (
             <TouchableOpacity
             // onPress={() => navigation.goBack()}
             >
@@ -974,3 +1278,12 @@ export const AuthStack = ({navigation}) => {
 export const AppStack = () => {
   return <Stack.Navigator></Stack.Navigator>;
 };
+
+const styles = StyleSheet.create({
+  circle:{
+    width: width * 0.19,
+        height: width * 0.19,
+        borderRadius: 60,
+        backgroundColor: 'white',
+  }
+})

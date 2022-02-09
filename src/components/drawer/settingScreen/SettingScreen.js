@@ -21,7 +21,9 @@ const SettingScreen = ({navigation}) => {
           style={SettingScreenStyle.icons}
           source={require('../../../assets/images/questionMark.png')}
         />
-        <TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate('FaqScreen')}
+        >
           <Text style={SettingScreenStyle.text}>F.A.Q.</Text>
         </TouchableOpacity>
       </View>
